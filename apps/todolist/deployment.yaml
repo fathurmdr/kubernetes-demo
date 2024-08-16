@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todolist
+  labels:
+    name: todolist
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: todolist
+  template:
+    metadata:
+      name: todolist
+      labels:
+        name: todolist
+    spec:
+      containers:
+        - name: todolist
+          image: fathur208/todolist
+          ports:
+            - containerPort: 3000
+      env:
+        - name: DB_HOST
+          value: "postgresql-service"
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_NAME
+          value: "todolist"
+        - name: DB_USER
+          value: "admin"
+        - name: DB_PASSWORD
+          value: "password"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: todolist-service
+spec:
+  type: NodePort
+  selector:
+    name: todolist
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 3001
