@@ -11,14 +11,14 @@ spec:
       containers:
         - name: migration
           image: fathur208/migration
-      env:
-        - name: DB_HOST
-          value: "postgresql-service"
-        - name: DB_PORT
-          value: "5432"
-        - name: DB_NAME
-          value: "todolist"
-        - name: DB_USER
-          value: "admin"
-        - name: DB_PASSWORD
-          value: "password"
+          env:
+          - name: DB_HOST
+            value: "postgresql-service"
+          - name: DB_PORT
+            value: "5432"
+          - name: DB_NAME
+            value: "todolist"
+          - name: DB_USER
+            value: "admin"
+          - name: DB_PASSWORD
+            value: "password"
