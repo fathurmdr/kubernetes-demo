@@ -26,7 +26,7 @@ spec:
             - name: DB_PORT
               value: "5432"
             - name: DB_NAME
-              value: "check-todo"
+              value: "todolist"
             - name: DB_USER
               value: "admin"
             - name: DB_PASSWORD
