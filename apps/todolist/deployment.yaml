@@ -17,20 +17,20 @@ spec:
     spec:
       containers:
         - name: todolist
-          image: fathur208/todolist
+          image: fathur208/todolist:1.1
           ports:
             - containerPort: 3000
-      env:
-        - name: DB_HOST
-          value: "postgresql-service"
-        - name: DB_PORT
-          value: "5432"
-        - name: DB_NAME
-          value: "todolist"
-        - name: DB_USER
-          value: "admin"
-        - name: DB_PASSWORD
-          value: "password"
+          env:
+            - name: DB_HOST
+              value: "postgresql-service"
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_NAME
+              value: "todolist"
+            - name: DB_USER
+              value: "admin"
+            - name: DB_PASSWORD
+              value: "password"
 
 ---
 
@@ -43,6 +43,6 @@ spec:
   selector:
     name: todolist
   ports:
-    - port: 3000
+    - port: 30001
       targetPort: 3000
-      nodePort: 3001
+      nodePort: 30001
