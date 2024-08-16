@@ -1,27 +1,29 @@
+@baseUrl=http://localhost:3000
+
 ### get todo
-GET http://localhost:3000/todo
+GET {{baseUrl}}/todo
 Accept: application/json
 Content-Type: application/json
 
 ### get todo by id
-GET http://localhost:3000/todo/2
+GET {{baseUrl}}/todo/2
 Accept: application/json
 Content-Type: application/json
 
 
 ### add todo
-POST http://localhost:3000/todo
+POST {{baseUrl}}/todo
 Accept: application/json
 Content-Type: application/json
 
 {
-    "name": "create check todo app",
-    "description": "create containerized check todo app",
+    "name": "create todolist app",
+    "description": "create containerized todolist app",
     "deadline": "2024-08-17"
 }
 
 ### update todo
-PUT http://localhost:3000/todo/1
+PUT {{baseUrl}}/todo/1
 Accept: application/json
 Content-Type: application/json
 
@@ -32,7 +34,7 @@ Content-Type: application/json
 }
 
 ### check todo
-PATCH http://localhost:3000/todo/check/1
+PATCH {{baseUrl}}/todo/check/1
 Accept: application/json
 Content-Type: application/json
 
