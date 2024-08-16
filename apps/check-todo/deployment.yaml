@@ -43,6 +43,6 @@ spec:
   selector:
     name: check-todo
   ports:
-    - port: 30001
+    - port: 30002
       targetPort: 3000
-      nodePort: 30001
+      nodePort: 30002
