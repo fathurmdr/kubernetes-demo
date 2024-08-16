@@ -24,6 +24,22 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.use((req, res, next) => {
+  const start = Date.now();
+
+  res.on('finish', () => {
+      const duration = Date.now() - start;
+      const method = req.method;
+      const url = req.url;
+      const timestamp = new Date().toISOString();
+      const statusCode = res.statusCode;
+
+      console.log(`[${timestamp}] ${method} ${url} ${statusCode} - ${duration}ms`);
+  });
+  
+  next();
+})
+
 app.get("/", (req, res) => {
   res.send("keep alive!");
 });
