@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: check-todo
+  labels:
+    name: check-todo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: check-todo
+  template:
+    metadata:
+      name: check-todo
+      labels:
+        name: check-todo
+    spec:
+      containers:
+        - name: check-todo
+          image: fathur208/check-todo:1.0
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DB_HOST
+              value: "postgresql-service"
+            - name: DB_PORT
+              value: "5432"
+            - name: DB_NAME
+              value: "check-todo"
+            - name: DB_USER
+              value: "admin"
+            - name: DB_PASSWORD
+              value: "password"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: check-todo-service
+spec:
+  type: NodePort
+  selector:
+    name: check-todo
+  ports:
+    - port: 30001
+      targetPort: 3000
+      nodePort: 30001
